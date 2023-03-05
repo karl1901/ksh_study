@@ -1,0 +1,179 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
+.consoleFontStyle {
+  display: flex;
+  justify-content: center;
+  color: red;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border: 3px solid rgb(255, 0, 0);
+  background: #ffffff;
+}
+
+.loadings {
+  position: fixed;
+  color: white;
+}
+
+.tops {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 1rem 0rem;
+}
+
+.tops > div > div:nth-child(1) {
+  display: flex;
+}
+
+.tops > div > div:nth-child(1) > div:nth-child(1) {
+  width: 300px;
+  height: 40px;
+}
+
+.tops > div > div:nth-child(1) > div:nth-child(2) {
+  color: white;
+  font-weight: bold;
+  font-size: 1.3rem;
+  font-family: '楷体';
+  letter-spacing: 4px;
+  width: 400px;
+  height: 60px;
+}
+
+.tops > div > div:nth-child(1) > div:nth-child(3) {
+  width: 300px;
+  height: 40px;
+}
+
+.tops > div > div:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+.tops > div > div:nth-child(2) > div {
+  width: 400px;
+  height: 40px;
+}
+
+.lefts {
+  position: absolute;
+  left: 2rem;
+  top: 100px;
+}
+
+.lefts > div {
+  display: flex;
+  margin: 0.7rem 0rem;
+  width: 280px;
+  height: 200px;
+}
+
+.lefts > div > div {
+  padding: 1rem;
+  color: white;
+}
+
+.dbb1 {
+  background: #3b3b3b38;
+  border-radius: 15%;
+}
+
+.lefts > div > div > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+
+.lefts > div > div > div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rights {
+  position: absolute;
+  right: 2rem;
+  top: 100px;
+}
+
+.rights > div {
+  margin: 0.7rem 0rem;
+  width: 280px;
+  height: 200px;
+}
+
+.rights > div > div {
+  padding: 1rem;
+  color: white;
+}
+
+.rights > div > div > div {
+  display: flex;
+  align-items: center;
+}
+
+#chartCity {
+  width: 83%;
+}
+
+.waterLevelStyles {
+  display: flex;
+  justify-content: center;
+  width: 89%;
+}
+
+.waterLevelStyles > div {
+  width: 100%;
+  margin: 0.5rem 0.5rem;
+}
+
+.waterLevelStyles > div > div:first-child {
+  width: 100%;
+}
+
+.waterLevelStyles > div > div:last-child {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.4rem;
+}
+
+.pclStyles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pclStyles > div {
+  width: 100%;
+  height: 200px;
+  margin-top: -1.2rem;
+  margin-left: -2rem;
+}
+
+.dtCityConfigStyles {
+  display: flex;
+  width: 83%;
+}
+
+.cityMapConfigStyles {
+  display: flex;
+  margin-top: 0.3rem;
+  margin-left: 0.4rem;
+}
+
+.cityXfConfigStyles {
+  display: flex;
+  width: 83%;
+}
+
+#jdCon {
+  display: flex;
+  width: 97%;
+  height: 150px;
+}
