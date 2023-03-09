@@ -12,10 +12,14 @@ Vue.use(VueRouter);
 
 const routes = myTools.sendRoutes();
 
-// console.log('加载路由:', routes);
+routes.forEach((r) => {
+  console.log('name:', r.name);
+  console.log('path:', r.path);
+  console.log('component:', r.component.__file);
+  console.log('-------------------');
+});
 
 const router = new VueRouter({
-  // url去#
   mode: 'history',
   routes,
 });

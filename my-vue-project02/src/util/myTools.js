@@ -7,9 +7,7 @@ let myTools = {};
  */
 myTools.errorHandler = (Vue) => {
   Vue.config.errorHandler = (error) => {
-    // 控制台打印错误信息
     console.error('出错了：', error.message);
-    // 打开新标签页使用Bing搜索错误信息
     window.open('https://cn.bing.com/search?q=' + error.message);
   };
 };
@@ -41,17 +39,15 @@ myTools.getCssText = (className) => {
  * @returns 路由信息集合
  */
 myTools.sendRoutes = () => {
-  let files = require.context('../views/', false, /.vue$/);
+  let files = require.context('../views/', true, /.vue$/);
   let routes = [];
   files.keys().forEach((k) => {
     let filesModule = files(k);
-    let url = filesModule.default.__file.replace('src', '..');
-    let name = filesModule.default.name;
-    let names = url.substr(url.lastIndexOf('/') + 1, url.length - (url.lastIndexOf('/') + 5));
-    names = names.toLowerCase();
+    let indexViews = filesModule.default.__file.indexOf('views/') + 6;
+    let names = filesModule.default.__file.substr(indexViews, filesModule.default.__file.indexOf('.vue') - indexViews);
     routes.push({
-      path: name === 'Home' ? '/' : '/' + names,
-      name: name,
+      path: filesModule.default.name === 'Home' ? '/' : '/' + names.toLowerCase(),
+      name: filesModule.default.name,
       component: filesModule.default,
     });
   });
