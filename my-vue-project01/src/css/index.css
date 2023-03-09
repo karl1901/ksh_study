@@ -33,7 +33,7 @@ body {
 }
 
 .tops > div > div:nth-child(1) > div:nth-child(1) {
-  width: 300px;
+  width: 200px;
   height: 40px;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 
 .tops > div > div:nth-child(1) > div:nth-child(3) {
-  width: 300px;
+  width: 200px;
   height: 40px;
 }
 
@@ -70,7 +70,7 @@ body {
 
 .lefts > div {
   display: flex;
-  margin: 0.7rem 0rem;
+  margin: 3rem 0rem;
   width: 280px;
   height: 200px;
 }
@@ -103,7 +103,7 @@ body {
 }
 
 .rights > div {
-  margin: 0.7rem 0rem;
+  margin: 3rem 0rem;
   width: 280px;
   height: 200px;
 }

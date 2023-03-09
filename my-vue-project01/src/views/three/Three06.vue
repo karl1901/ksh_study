@@ -3,6 +3,12 @@
     <!-- loading -->
     <dv-loading class="loadings" v-show="loading">{{ loaded }}%</dv-loading>
 
+    <!-- 时钟 -->
+    <dv-border-box-8 :reverse="true" class="timeStyless">
+      <div>{{ nowTime }}</div>
+      <div id="he-plugin-simple"></div>
+    </dv-border-box-8>
+
     <!-- 顶部部分 -->
     <div v-show="!loading" class="tops">
       <div>
@@ -107,6 +113,7 @@ export default {
   name: 'Three06',
   data() {
     return {
+      nowTime: '',
       title: '华为智慧城市可视化大屏',
       loading: false,
       loaded: 0,
@@ -134,28 +141,28 @@ export default {
       cityPeoData: [
         {
           type: '湖南',
-          value: 36
+          value: 36,
         },
         {
           type: '湖北',
-          value: 34
+          value: 34,
         },
         {
           type: '深圳',
-          value: 40
+          value: 40,
         },
         {
           type: '北京',
-          value: 47
+          value: 47,
         },
         {
           type: '上海',
-          value: 44
+          value: 44,
         },
         {
           type: '广州',
-          value: 57
-        }
+          value: 57,
+        },
       ],
       // 城市人口条形图对象
       chartCity: null,
@@ -165,23 +172,23 @@ export default {
           city: '北京',
           waterLevelConfig: {
             data: [55],
-            shape: 'roundRect'
-          }
+            shape: 'roundRect',
+          },
         },
         {
           city: '上海',
           waterLevelConfig: {
             data: [33],
-            shape: 'roundRect'
-          }
+            shape: 'roundRect',
+          },
         },
         {
           city: '武汉',
           waterLevelConfig: {
             data: [23],
-            shape: 'roundRect'
-          }
-        }
+            shape: 'roundRect',
+          },
+        },
       ],
       // 人口占比
       peoConfigList: {
@@ -190,461 +197,464 @@ export default {
         data: [
           {
             name: '周口',
-            value: 55
+            value: 55,
           },
           {
             name: '南阳',
-            value: 120
+            value: 120,
           },
           {
             name: '西峡',
-            value: 78
+            value: 78,
           },
           {
             name: '驻马店',
-            value: 66
+            value: 66,
           },
           {
             name: '新乡',
-            value: 80
-          }
-        ]
+            value: 80,
+          },
+        ],
       },
       // 低碳城市
       dtCityConfigList: {
         data: [
           {
             name: '南阳',
-            value: 167
+            value: 167,
           },
           {
             name: '周口',
-            value: 67
+            value: 67,
           },
           {
             name: '漯河',
-            value: 123
+            value: 123,
           },
           {
             name: '郑州',
-            value: 55
+            value: 55,
           },
           {
             name: '西峡',
-            value: 98
-          }
-        ]
+            value: 98,
+          },
+        ],
       },
       // 城市消费
       cityXfConfigList: {
         data: [
           {
             name: '周口',
-            value: 55
+            value: 55,
           },
           {
             name: '南阳',
-            value: 120
+            value: 120,
           },
           {
             name: '西峡',
-            value: 78
+            value: 78,
           },
           {
             name: '驻马店',
-            value: 66
+            value: 66,
           },
           {
             name: '新乡',
-            value: 80
+            value: 80,
           },
           {
             name: '信阳',
-            value: 45
+            value: 45,
           },
           {
             name: '漯河',
-            value: 29
-          }
+            value: 29,
+          },
         ],
-        unit: '万元'
+        unit: '万元',
       },
       // 消费趋势
       xfqsData: [
         {
           Data: '2010-01',
-          sales: 1998
+          sales: 1998,
         },
         {
           Data: '2010-02',
-          sales: 1850
+          sales: 1850,
         },
         {
           Data: '2010-03',
-          sales: 1720
+          sales: 1720,
         },
         {
           Data: '2010-04',
-          sales: 1818
+          sales: 1818,
         },
         {
           Data: '2010-05',
-          sales: 1920
+          sales: 1920,
         },
         {
           Data: '2010-06',
-          sales: 1802
+          sales: 1802,
         },
         {
           Data: '2010-07',
-          sales: 1945
+          sales: 1945,
         },
         {
           Data: '2010-08',
-          sales: 1856
+          sales: 1856,
         },
         {
           Data: '2010-09',
-          sales: 2107
+          sales: 2107,
         },
         {
           Data: '2010-10',
-          sales: 2140
+          sales: 2140,
         },
         {
           Data: '2010-11',
-          sales: 2311
+          sales: 2311,
         },
         {
           Data: '2010-12',
-          sales: 1972
+          sales: 1972,
         },
         {
           Data: '2011-01',
-          sales: 1760
+          sales: 1760,
         },
         {
           Data: '2011-02',
-          sales: 1824
+          sales: 1824,
         },
         {
           Data: '2011-03',
-          sales: 1801
+          sales: 1801,
         },
         {
           Data: '2011-04',
-          sales: 2001
+          sales: 2001,
         },
         {
           Data: '2011-05',
-          sales: 1640
+          sales: 1640,
         },
         {
           Data: '2011-06',
-          sales: 1502
+          sales: 1502,
         },
         {
           Data: '2011-07',
-          sales: 1621
+          sales: 1621,
         },
         {
           Data: '2011-08',
-          sales: 1480
+          sales: 1480,
         },
         {
           Data: '2011-09',
-          sales: 1549
+          sales: 1549,
         },
         {
           Data: '2011-10',
-          sales: 1390
+          sales: 1390,
         },
         {
           Data: '2011-11',
-          sales: 1325
+          sales: 1325,
         },
         {
           Data: '2011-12',
-          sales: 1250
+          sales: 1250,
         },
         {
           Data: '2012-01',
-          sales: 1394
+          sales: 1394,
         },
         {
           Data: '2012-02',
-          sales: 1406
+          sales: 1406,
         },
         {
           Data: '2012-03',
-          sales: 1578
+          sales: 1578,
         },
         {
           Data: '2012-04',
-          sales: 1465
+          sales: 1465,
         },
         {
           Data: '2012-05',
-          sales: 1689
+          sales: 1689,
         },
         {
           Data: '2012-06',
-          sales: 1755
+          sales: 1755,
         },
         {
           Data: '2012-07',
-          sales: 1495
+          sales: 1495,
         },
         {
           Data: '2012-08',
-          sales: 1508
+          sales: 1508,
         },
         {
           Data: '2012-09',
-          sales: 1433
+          sales: 1433,
         },
         {
           Data: '2012-10',
-          sales: 1344
+          sales: 1344,
         },
         {
           Data: '2012-11',
-          sales: 1201
+          sales: 1201,
         },
         {
           Data: '2012-12',
-          sales: 1065
+          sales: 1065,
         },
         {
           Data: '2013-01',
-          sales: 1255
+          sales: 1255,
         },
         {
           Data: '2013-02',
-          sales: 1429
+          sales: 1429,
         },
         {
           Data: '2013-03',
-          sales: 1398
+          sales: 1398,
         },
         {
           Data: '2013-04',
-          sales: 1678
+          sales: 1678,
         },
         {
           Data: '2013-05',
-          sales: 1524
+          sales: 1524,
         },
         {
           Data: '2013-06',
-          sales: 1688
+          sales: 1688,
         },
         {
           Data: '2013-07',
-          sales: 1500
+          sales: 1500,
         },
         {
           Data: '2013-08',
-          sales: 1670
+          sales: 1670,
         },
         {
           Data: '2013-09',
-          sales: 1734
+          sales: 1734,
         },
         {
           Data: '2013-10',
-          sales: 1699
+          sales: 1699,
         },
         {
           Data: '2013-11',
-          sales: 1508
+          sales: 1508,
         },
         {
           Data: '2013-12',
-          sales: 1680
+          sales: 1680,
         },
         {
           Data: '2014-01',
-          sales: 1750
+          sales: 1750,
         },
         {
           Data: '2014-02',
-          sales: 1602
+          sales: 1602,
         },
         {
           Data: '2014-03',
-          sales: 1834
+          sales: 1834,
         },
         {
           Data: '2014-04',
-          sales: 1722
+          sales: 1722,
         },
         {
           Data: '2014-05',
-          sales: 1430
+          sales: 1430,
         },
         {
           Data: '2014-06',
-          sales: 1280
+          sales: 1280,
         },
         {
           Data: '2014-07',
-          sales: 1367
+          sales: 1367,
         },
         {
           Data: '2014-08',
-          sales: 1155
+          sales: 1155,
         },
         {
           Data: '2014-09',
-          sales: 1289
+          sales: 1289,
         },
         {
           Data: '2014-10',
-          sales: 1104
+          sales: 1104,
         },
         {
           Data: '2014-11',
-          sales: 1246
+          sales: 1246,
         },
         {
           Data: '2014-12',
-          sales: 1098
+          sales: 1098,
         },
         {
           Data: '2015-01',
-          sales: 1189
+          sales: 1189,
         },
         {
           Data: '2015-02',
-          sales: 1276
+          sales: 1276,
         },
         {
           Data: '2015-03',
-          sales: 1033
+          sales: 1033,
         },
         {
           Data: '2015-04',
-          sales: 956
+          sales: 956,
         },
         {
           Data: '2015-05',
-          sales: 845
+          sales: 845,
         },
         {
           Data: '2015-06',
-          sales: 1089
+          sales: 1089,
         },
         {
           Data: '2015-07',
-          sales: 944
+          sales: 944,
         },
         {
           Data: '2015-08',
-          sales: 1043
+          sales: 1043,
         },
         {
           Data: '2015-09',
-          sales: 893
+          sales: 893,
         },
         {
           Data: '2015-10',
-          sales: 840
+          sales: 840,
         },
         {
           Data: '2015-11',
-          sales: 934
+          sales: 934,
         },
         {
           Data: '2015-12',
-          sales: 810
+          sales: 810,
         },
         {
           Data: '2016-01',
-          sales: 782
+          sales: 782,
         },
         {
           Data: '2016-02',
-          sales: 1089
+          sales: 1089,
         },
         {
           Data: '2016-03',
-          sales: 745
+          sales: 745,
         },
         {
           Data: '2016-04',
-          sales: 680
+          sales: 680,
         },
         {
           Data: '2016-05',
-          sales: 802
+          sales: 802,
         },
         {
           Data: '2016-06',
-          sales: 697
+          sales: 697,
         },
         {
           Data: '2016-07',
-          sales: 583
+          sales: 583,
         },
         {
           Data: '2016-08',
-          sales: 456
+          sales: 456,
         },
         {
           Data: '2016-09',
-          sales: 524
+          sales: 524,
         },
         {
           Data: '2016-10',
-          sales: 398
+          sales: 398,
         },
         {
           Data: '2016-11',
-          sales: 278
+          sales: 278,
         },
         {
           Data: '2016-12',
-          sales: 195
+          sales: 195,
         },
         {
           Data: '2017-01',
-          sales: 145
+          sales: 145,
         },
         {
           Data: '2017-02',
-          sales: 207
-        }
-      ]
+          sales: 207,
+        },
+      ],
     };
   },
   mounted() {
     this.init();
     this.animat();
     this.autoCanvas();
+    setInterval(() => {
+      this.nowDateTime();
+    }, 1000);
   },
   methods: {
     createJdChart() {
       const chart = new this.$g2.Chart({
         container: 'jdCon',
         autoFit: true,
-        height: 500
+        height: 500,
       });
       chart.data(this.xfqsData);
       chart.scale('Data', {
         range: [0, 1],
         tickCount: 10,
-        type: 'timeCat'
+        type: 'timeCat',
       });
       chart.scale('sales', {
-        nice: true
+        nice: true,
       });
       chart.axis('Data', {
         label: {
           style: {
-            fill: '#F8F8FF'
-          }
-        }
+            fill: '#F8F8FF',
+          },
+        },
       });
       chart.axis('sales', {
         label: {
@@ -652,12 +662,12 @@ export default {
             return text.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
           },
           style: {
-            fill: '#F8F8FF'
-          }
-        }
+            fill: '#F8F8FF',
+          },
+        },
       });
       chart.tooltip({
-        showCrosshairs: true
+        showCrosshairs: true,
       });
 
       chart.line().position('Data*sales');
@@ -669,7 +679,7 @@ export default {
       this.chartCity = new this.$g2.Chart({
         container: 'chartCity',
         autoFit: true,
-        height: 150
+        height: 150,
       });
       // 设置数据源
       this.chartCity.data(this.cityPeoData);
@@ -678,8 +688,8 @@ export default {
         value: {
           max: 100,
           min: 0,
-          alias: '人数（万）'
-        }
+          alias: '人数（万）',
+        },
       });
       // 置换x,y轴
       this.chartCity.coordinate().transpose();
@@ -688,9 +698,9 @@ export default {
       this.chartCity.axis('type', {
         label: {
           style: {
-            fill: '#F8F8FF'
-          }
-        }
+            fill: '#F8F8FF',
+          },
+        },
       });
       // 内容配置
       this.chartCity
@@ -699,9 +709,9 @@ export default {
         .size(15)
         .label('value', {
           style: {
-            fill: '#F8F8FF'
+            fill: '#F8F8FF',
           },
-          offset: 10
+          offset: 10,
         });
       // 渲染图表
       this.chartCity.render();
@@ -721,7 +731,7 @@ export default {
         '/sky/posy.jpg',
         '/sky/negy.jpg',
         '/sky/posz.jpg',
-        '/sky/negz.jpg'
+        '/sky/negz.jpg',
       ];
       // 加载图片文件
       this.textureCubeLoader = new THREE.CubeTextureLoader().load(urls);
@@ -823,7 +833,30 @@ export default {
         // 更新相机投影矩阵
         app.camera.updateProjectionMatrix();
       };
-    }
+    },
+    nowDateTime() {
+      let now = new Date();
+      let year = now.getUTCFullYear();
+      let month = now.getUTCMonth() + 1;
+      let day = now.getDate();
+      let hour = now.getHours();
+      let minute = now.getMinutes();
+      let second = now.getSeconds();
+      second = second < 10 ? '0' + second : second;
+      this.nowTime =
+        year +
+        '年' +
+        month +
+        '月' +
+        day +
+        '日' +
+        ' ' +
+        hour +
+        ':' +
+        minute +
+        ':' +
+        second;
+    },
   },
   created() {
     // 打印签名
@@ -831,11 +864,29 @@ export default {
       '%c报错不用管，能运行就行!',
       this.$getCssText('consoleFontStyle')
     );
-  }
+  },
 };
 </script>
 
 <style>
+.timeStyless {
+  position: fixed;
+  display: flex;
+  width: 15%;
+  height: 50px;
+  left: 3%;
+  top: 2%;
+}
+
+.timeStyless > div {
+  width: 100%;
+  display: flex;
+  padding: 1rem 0rem 2rem 0.8rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
 body {
   margin: 0px;
   overflow: hidden;
