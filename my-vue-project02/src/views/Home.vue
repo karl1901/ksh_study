@@ -27,7 +27,13 @@ export default {
       this.$router.push(val);
     },
     loadRoutes() {
-      this.routes = router.options.routes;
+      let routerss = router.options.routes;
+      routerss.forEach((rs) => {
+        if (rs.name === 'Home') {
+          routerss.splice(routerss.indexOf(rs), 1);
+        }
+      });
+      this.routes = routerss;
     },
   },
   created() {

@@ -12,13 +12,6 @@ Vue.use(VueRouter);
 
 const routes = myTools.sendRoutes();
 
-routes.forEach((r) => {
-  console.log('name:', r.name);
-  console.log('path:', r.path);
-  console.log('component:', r.component.__file);
-  console.log('-------------------');
-});
-
 const router = new VueRouter({
   mode: 'history',
   routes,
