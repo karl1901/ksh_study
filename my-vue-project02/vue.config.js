@@ -1,4 +1,6 @@
 module.exports = {
+  //关闭语法检查
+  lintOnSave: false,
   // 生成环境不需要map文件
   productionSourceMap: !process.env.NODE_ENV === 'production',
   // 项目输出路径(build后项目保存的路径)

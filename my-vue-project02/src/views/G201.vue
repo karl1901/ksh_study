@@ -10,6 +10,10 @@
       <div id="container05"></div>
       <div id="container06"></div>
       <div id="container07"></div>
+      <div id="container08"></div>
+      <div id="container09"></div>
+      <div id="container10"></div>
+      <div id="container11"></div>
     </div>
 
     <div v-show="loading" class="loadings">
@@ -46,9 +50,132 @@ export default {
       this.loadContainer05();
       this.loadContainer06();
       this.loadContainer07();
+      this.loadContainer08();
+      this.loadContainer09();
+      this.loadContainer10();
+      this.loadContainer11();
     }, 2000);
   },
   methods: {
+    loadContainer11() {
+      const chart = new this.$g2.Chart({
+        container: 'container11',
+        autoFit: true,
+      });
+
+      chart.coordinate({ type: 'radial', endAngle: Math.PI });
+
+      chart
+        .interval()
+        .data({
+          value: [
+            { name: 'G', star: 814 },
+            { name: 'G2', star: 11425 },
+            { name: 'G2Plot', star: 2320 },
+            { name: 'S2', star: 968 },
+            { name: 'F2', star: 7346 },
+            { name: 'L7', star: 2888 },
+            { name: 'G6', star: 9314 },
+            { name: 'X6', star: 3985 },
+            { name: 'AVA', star: 1151 },
+          ],
+          transform: [{ type: 'sortBy', fields: [['star', true]] }],
+        })
+        .encode('x', 'name')
+        .encode('y', 'star')
+        .scale('y', { type: 'sqrt' })
+        .encode('color', 'name')
+        .encode('size', 40)
+        .style('radius', 20)
+        .label({
+          text: 'star',
+          position: 'outside',
+          autoRotate: true,
+          rotateToAlignArc: true,
+          style: {
+            dx: 4,
+          },
+        })
+        .axis('x', { title: false })
+        .axis('y', false)
+        .animate('enter', { type: 'waveIn', duration: 1000 });
+
+      chart.interaction('tooltip');
+
+      chart.title({
+        size: 25,
+        title: '这是图表标题',
+        align: 'center',
+      });
+
+      chart.render();
+    },
+    loadContainer10() {
+      const chart = new this.$g2.Chart({
+        container: 'container10',
+        autoFit: true,
+      });
+
+      chart.data({
+        type: 'fetch',
+        value: 'https://assets.antv.antgroup.com/g2/unemployment-by-industry.json',
+      });
+
+      chart
+        .area()
+        .transform([
+          { type: 'stackY' }, // Try to remove this line.
+        ])
+        .encode('x', (d) => new Date(d.date))
+        .encode('y', 'unemployed')
+        .encode('color', 'industry')
+        .encode('shape', 'smooth');
+
+      chart.interaction('tooltip');
+
+      chart.render();
+    },
+    loadContainer09() {
+      const chart = new this.$g2.Chart({
+        container: 'container09',
+        autoFit: true,
+      });
+
+      chart
+        .point()
+        .data({
+          type: 'fetch',
+          value: 'https://gw.alipayobjects.com/os/basement_prod/6b4aa721-b039-49b9-99d8-540b3f87d339.json',
+        })
+        .encode('x', 'height')
+        .encode('y', 'weight')
+        .encode('color', 'gender');
+
+      chart.interaction('tooltip');
+
+      chart.render();
+    },
+    loadContainer08() {
+      const chart = new this.$g2.Chart({
+        container: 'container08',
+        autoFit: true,
+      });
+
+      chart
+        .line()
+        .data({
+          type: 'fetch',
+          value: 'https://gw.alipayobjects.com/os/bmw-prod/728a4bdc-9d0b-49e0-a92f-6320a6cddeed.csv',
+        })
+        .encode('x', 'date')
+        .encode('y', 'unemployment')
+        .encode('series', 'division')
+        .encode('color', 'steelblue');
+
+      chart.interaction('tooltip');
+
+      chart.render();
+    },
     loadContainer07() {
       const data = [
         {
@@ -359,7 +486,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 .loadings {
   position: fixed;
   display: flex;
